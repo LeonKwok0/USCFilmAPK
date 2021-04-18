@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="homeTitle">USC Films</string>
+    <string name="btn_mov">Movies</string>
+    <string name="text_loading">Loading...</string>
+</resources>
