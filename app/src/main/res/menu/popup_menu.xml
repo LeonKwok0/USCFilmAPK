@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/tmdb"
+        android:title="@string/pop_open_in_tmdb">
+    </item>
+
+    <item android:id="@+id/share_facebook"
+        android:title="@string/pop_share_on_facebook">
+    </item>
+
+    <item android:id="@+id/share_tw"
+        android:title="@string/pop_share_on_twitter">
+    </item>
+
+    <item android:id="@+id/action_watchlist"
+        android:title="@string/pop_add_to_watchlist">
+    </item>
+
+
+</menu>

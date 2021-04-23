@@ -3,13 +3,14 @@ package edu.usc.uscfilm01.ui.home;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +26,6 @@ import com.smarteist.autoimageslider.SliderView;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,15 +67,15 @@ public class HomeFragment extends Fragment {
 
     // modeUrl : movie tv
     public void fetchData(String modeUrl, View root){
-        showSpinner(homeView.VISIBLE,homeView);
-        String baseUrl = "http://192.168.1.9:3001/";
+        showSpinner(View.VISIBLE,root);
+        String baseUrl = "http://10.0.2.2:3001/";
         String topRatedUrl = baseUrl + "collect/"+modeUrl+"/top_rated";
         String popularUrl = baseUrl + "collect/"+modeUrl+"/popular";
         String mvBannerUrl = baseUrl + "current_play";
         String tvBannerUrl = baseUrl + "collect/trending/tv/day";
         String bannerUrl = modeUrl.equals("tv") ?tvBannerUrl:mvBannerUrl;
 
-        RequestQueue queue = Volley.newRequestQueue(this.getActivity());
+        RequestQueue queue = Volley.newRequestQueue(root.getContext());
         ArrayList<ImgItem>  popularData = new ArrayList<>();
         ArrayList<ImgItem> topData = new ArrayList<>();
         ArrayList<ImgItem> bannerData = new ArrayList<>();
@@ -85,12 +85,13 @@ public class HomeFragment extends Fragment {
         queue.add(banner);
         queue.add(top);
         queue.add(popular);
+        // TODO this is deprecated method, change in future
         queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
             public void onRequestFinished(Request<Object> request){
                 addSlider( bannerData,root);
                 addGallery(topData,R.id.gallery,root);
                 addGallery(popularData,R.id.gallery_popular,root);
-                showSpinner(root.GONE,root);
+                showSpinner(View.GONE,root);
             }
         });
     }
@@ -98,9 +99,9 @@ public class HomeFragment extends Fragment {
 
     public  void showSpinner(int flag,View root){
         root.findViewById(R.id.loading_effect).setVisibility(flag);
-        int other = root.GONE;
-        if(flag != root.VISIBLE){
-            other = root.VISIBLE;
+        int other = View.GONE;
+        if(flag != View.VISIBLE){
+            other = View.VISIBLE;
         }
         root.findViewById(R.id.header).setVisibility(other);
         root.findViewById(R.id.home_content).setVisibility(other);
@@ -112,11 +113,25 @@ public class HomeFragment extends Fragment {
         RecyclerView gallery = root.findViewById(galleryId);
         gallery.setNestedScrollingEnabled(false);
         GalleryAdapter galleryAdapter = new GalleryAdapter(data, root.getContext());
+
+        // event of card
+//        galleryAdapter.setItemListener(new GalleryAdapter.itemListener() {
+//            @Override
+//            public void onClickItem(int position) {
+//                Log.d("gallery-outer","click "+position);
+//            }
+//            @Override
+//            public void onPressItem(int position) {
+//                Log.d("gallery-outer","press "+position);
+//            }
+//        });
+
         gallery.setAdapter(galleryAdapter);
         LinearLayoutManager galleryLinearLayout = new LinearLayoutManager(root.getContext());
-        galleryLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        galleryLinearLayout.setOrientation(RecyclerView.HORIZONTAL);
         gallery.setLayoutManager(galleryLinearLayout);
     }
+
 
     public void addSlider(ArrayList<ImgItem> sliderDataArrayList, View root){
         SliderView sliderView = root.findViewById(R.id.slider);

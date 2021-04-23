@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
@@ -10,7 +10,17 @@
         android:layout_width="114dp"
         android:layout_height="171dp"
         android:layout_marginEnd="19dp"
-        android:src="@drawable/demo"></ImageView>
+        android:foreground="@drawable/gallery_shell"
+        android:src="@drawable/demo">
+    </ImageView>
+    <TextView
+        android:id="@+id/btn_pop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_baseline_more_vert_24"
+        android:layout_alignEnd="@id/img_item"
+        android:layout_alignBottom="@id/img_item"
+        >
+    </TextView>
 
-
-</LinearLayout>
+</RelativeLayout>

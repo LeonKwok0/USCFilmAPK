@@ -11,4 +11,12 @@
     <string name="logo">logo</string>
     <string name="text_loading">Loading...</string>
     <string name="sub_title_popular">"Popular"</string>
+    <string name="pop_open_in_tmdb">Open in TMDB</string>
+    <string name="pop_share_on_facebook">Share on Facebook</string>
+    <string name="pop_share_on_twitter">Share On Twitter</string>
+    <string name="pop_add_to_watchlist">Add to Watchlist</string>
+    <string name="pop_remove_watchlist">Remove from Watchlist</string>
+    <string name="footer_text">Powered by TMDB \n Developed by LiangGuo</string>
+    <string name="empty_wl_text">Nothing saved to Watchlist</string>
+
 </resources>

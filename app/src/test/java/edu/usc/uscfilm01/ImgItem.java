@@ -1,4 +1,6 @@
-package edu.usc.uscfilm01.ui.home;
+package edu.usc.uscfilm01;
+
+import org.junit.Test;
 
 public class ImgItem {
     private  int id;
@@ -48,15 +50,25 @@ public class ImgItem {
     }
 
     public String watchListString() {
-        return id+","+poster_path+","+media_type;
+        return id+","+poster_path;
     }
 
     public ImgItem getInstance(String data){
         ImgItem item = new ImgItem();
         item.setId(Integer.parseInt(data.split(",")[0]));
         item.setPoster_path(data.split(",")[1]);
-        item.setMedia_type(data.split(",")[2]);
         return  item;
     }
 
+
+
+    @Test
+    public void strDemo() {
+        ImgItem i1 = new ImgItem();
+        i1.setId(1231);
+        i1.setPoster_path("https://testsfsdf/sdfsdf");
+        System.out.println(i1.watchListString());
+        System.out.println(i1.getInstance(i1.watchListString()).getPoster_path());
+
+    }
 }
