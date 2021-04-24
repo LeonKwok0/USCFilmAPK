@@ -1,7 +1,4 @@
 package edu.usc.uscfilm01.ui.watchList;
-
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -13,12 +10,12 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.Collection;
 import java.util.Collections;
 
 import edu.usc.uscfilm01.R;
@@ -35,15 +32,28 @@ public class WatchListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         if(watchView==null){
             watchView = inflater.inflate(R.layout.fragment_watch_list, container, false);
         }
-        showPic(watchView);
+
+        // fetch data from local
+        DataPersitence localData = new DataPersitence(watchView.getContext(),"alldata");
+        // if no data show empty data page
+        int size = localData.getItemList().size();
+        if(size == 0){
+            Log.d("data","no data");
+            watchView.findViewById(R.id.empty_wl).setVisibility(View.VISIBLE);
+            watchView.findViewById(R.id.wl_content_view).setVisibility(View.GONE);
+        }else {
+            showPic(watchView,localData);
+        }
+
         return watchView;
     }
 
-    public void showPic(View root){
-        DataPersitence localData = new DataPersitence(root.getContext(),"alldata");
+    public void showPic(View root, DataPersitence localData){
+
         RecyclerView wlRecView = root.findViewById(R.id.wl_rec_list);
         WatchListAdapter wlAdapter = new WatchListAdapter(localData.getItemList(), root.getContext());
         wlAdapter.setItemListener(new WatchListAdapter.itemListener() {

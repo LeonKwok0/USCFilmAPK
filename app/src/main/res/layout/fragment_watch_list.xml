@@ -8,10 +8,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/empty_wl"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="411dp"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
