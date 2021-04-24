@@ -114,17 +114,6 @@ public class HomeFragment extends Fragment {
         gallery.setNestedScrollingEnabled(false);
         GalleryAdapter galleryAdapter = new GalleryAdapter(data, root.getContext());
 
-        // event of card
-//        galleryAdapter.setItemListener(new GalleryAdapter.itemListener() {
-//            @Override
-//            public void onClickItem(int position) {
-//                Log.d("gallery-outer","click "+position);
-//            }
-//            @Override
-//            public void onPressItem(int position) {
-//                Log.d("gallery-outer","press "+position);
-//            }
-//        });
 
         gallery.setAdapter(galleryAdapter);
         LinearLayoutManager galleryLinearLayout = new LinearLayoutManager(root.getContext());

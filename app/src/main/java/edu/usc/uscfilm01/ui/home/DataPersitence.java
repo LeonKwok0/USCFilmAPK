@@ -33,7 +33,7 @@ public class DataPersitence {
     }
     
     public void putString(String k, ImgItem v){
-        dataList.add(v);
+        dataList.add(0,v);
         order.add(k);
     }
     
@@ -55,7 +55,6 @@ public class DataPersitence {
         String finalData = ImgItem.arrToString(dataList);
         editor.putString("allData",finalData);
         editor.commit();
-
     }
 
     public void redoOrder(){
@@ -70,6 +69,10 @@ public class DataPersitence {
             Log.d("data",""+item.getId());
         }
 
+    }
+
+    public ArrayList<ImgItem> getItemList(){
+        return  dataList;
     }
 
     public boolean contains(String key){

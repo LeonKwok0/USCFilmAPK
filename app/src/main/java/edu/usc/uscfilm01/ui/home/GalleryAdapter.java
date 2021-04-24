@@ -3,7 +3,6 @@ package edu.usc.uscfilm01.ui.home;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
