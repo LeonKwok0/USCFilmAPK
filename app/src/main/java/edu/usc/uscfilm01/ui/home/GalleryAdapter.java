@@ -2,13 +2,11 @@ package edu.usc.uscfilm01.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -27,14 +25,12 @@ import edu.usc.uscfilm01.R;
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHolder> {
     private final List<ImgItem> data;
     private final Context ct;
-    private SharedPreferences localData;
-    private SharedPreferences.Editor editor;
+    private DataPersitence localData;
 
     public GalleryAdapter(List<ImgItem> data, Context context) {
         this.data = data;
         this.ct = context;
-        this.localData= ct.getSharedPreferences("watchlist", 0); // 0 - for private mode
-        this.editor = localData.edit();
+        this.localData = new DataPersitence(ct,"alldata");
     }
 
     @NonNull
@@ -71,14 +67,12 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
                     if(iListener !=null){
                         iListener.onClickItem(getBindingAdapterPosition());
                     }
-                    Log.d("gallery","click" +getBindingAdapterPosition());
                 }
             });
 
             btn_pop.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("gallery","3point pressed" +getBindingAdapterPosition());
                     popMenuEvent(btn_pop, getBindingAdapterPosition());
                 }
             });
@@ -86,7 +80,6 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    Log.d("gallery","pressed" +getBindingAdapterPosition());
                     popMenuEvent(img, getBindingAdapterPosition());
                     if (iListener !=null){
                         iListener.onPressItem(img, getBindingAdapterPosition());
@@ -101,14 +94,16 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
     public void popMenuEvent(View anchor,int position){
         PopupMenu popupMenu = new PopupMenu(this.ct,anchor);
         popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
-        if(localData.contains(""+position)){
+        ImgItem item = data.get(position);
+
+        if(localData.contains(""+item.getId())){
               popupMenu.getMenu().getItem(3).setTitle(ct.getString(R.string.pop_remove_watchlist));
         }
 
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                ImgItem item = data.get(position);
+
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW);
                 String tmdbUrl = "https://www.themoviedb.org/"+item.getMedia_type()+"/"+item.getId();
                 if(menuItem.getItemId() == R.id.tmdb){
@@ -128,17 +123,17 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
                 }
 
                 if(menuItem.getItemId() == R.id.action_watchlist){
-                    if(localData.contains(""+position)){
+                    if(localData.contains(""+item.getId())){
                         // remove
-                        editor.remove(""+position);
                         Toast.makeText(ct, item.getTitle()+" was removed from watchlist ", Toast.LENGTH_SHORT).show();
+                        localData.remove(""+item.getId());
                         menuItem.setTitle(ct.getString(R.string.pop_add_to_watchlist));
                     }else {
-                        editor.putString(""+position,item.watchListString());
                         Toast.makeText(ct, item.getTitle()+" was added to watchlist ", Toast.LENGTH_SHORT).show();
+                        localData.putString(""+item.getId(),item);
                         menuItem.setTitle(ct.getString(R.string.pop_remove_watchlist));
                     }
-                    editor.commit();
+                    localData.commit();
                 }
                 return true;
             }
@@ -146,6 +141,8 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
         // Showing the popup menu
         popupMenu.show();
     }
+
+
 
     // for add listener out of this class
     public  interface itemListener{
@@ -157,5 +154,6 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
     public void setItemListener(itemListener listener){
         iListener = listener;
     }
+
 
 }

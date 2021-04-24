@@ -1,5 +1,9 @@
 package edu.usc.uscfilm01.ui.home;
 
+import android.provider.ContactsContract;
+
+import java.util.ArrayList;
+
 public class ImgItem {
     private  int id;
     private  String poster_path;
@@ -51,12 +55,32 @@ public class ImgItem {
         return id+","+poster_path+","+media_type;
     }
 
-    public ImgItem getInstance(String data){
+    public static ImgItem getInstance(String data){
         ImgItem item = new ImgItem();
         item.setId(Integer.parseInt(data.split(",")[0]));
         item.setPoster_path(data.split(",")[1]);
         item.setMedia_type(data.split(",")[2]);
         return  item;
     }
+
+    public static String arrToString(ArrayList<ImgItem> arrData){
+        StringBuilder res = new StringBuilder();
+        for (ImgItem item: arrData) {
+            res.append(item.watchListString()).append(";");
+        }
+        return res.toString();
+    }
+
+    public static  ArrayList<ImgItem> strToArr(String data){
+        ArrayList<ImgItem> res = new ArrayList<ImgItem>();
+        for (String str:data.split(";")) {
+            res.add(ImgItem.getInstance(str));
+        }
+        return res;
+    }
+
+
+
+
 
 }
