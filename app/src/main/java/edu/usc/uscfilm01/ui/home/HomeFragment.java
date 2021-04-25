@@ -66,9 +66,11 @@ public class HomeFragment extends Fragment {
     }
 
     // modeUrl : movie tv
+    // TODO each time when open or switch homepage will fetch data again;
+    //  use volley cache or ViewModel to improve
     public void fetchData(String modeUrl, View root){
         showSpinner(View.VISIBLE,root);
-        String baseUrl = "http://10.0.2.2:3001/";
+        String baseUrl = getResources().getString(R.string.base_url);
         String topRatedUrl = baseUrl + "collect/"+modeUrl+"/top_rated";
         String popularUrl = baseUrl + "collect/"+modeUrl+"/popular";
         String mvBannerUrl = baseUrl + "current_play";

@@ -10,6 +10,24 @@ public class ImgItem {
     private  String backdrop_path;
     private  String title;
     private  String media_type;
+    private  String vote_average;
+    private  String date;
+
+    public String getVote_average() {
+        return vote_average;
+    }
+
+    public void setVote_average(String vote_average) {
+        this.vote_average = vote_average;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public int getId() {
         return id;

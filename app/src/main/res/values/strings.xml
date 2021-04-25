@@ -18,5 +18,8 @@
     <string name="pop_remove_watchlist">Remove from Watchlist</string>
     <string name="footer_text">Powered by TMDB \n Developed by LiangGuo</string>
     <string name="empty_wl_text">Nothing saved to Watchlist</string>
+    <string name="hint_search">Search Movies and TV</string>
+    <string name="base_url">http://10.0.2.2:3001/</string>
+    <string name="search_no_res">No result found.</string>
 
 </resources>
