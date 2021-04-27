@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detail_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ColorBg"
+    android:paddingStart="4dp"
+    android:paddingTop="4dp"
+    android:paddingEnd="4dp"
+    >
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/backup_img"
+                android:layout_width="wrap_content"
+                android:layout_height="230dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backexample" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtube_player_view"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                app:autoPlay="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:showFullScreenButton="false"
+                app:videoId="S0Q4gqBUs7c" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="230dp" />
+
+            <TextView
+                android:id="@+id/detail_media_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/guideline_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="8dp"
+                android:text="Demo Title"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:background="@color/colorMost"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/detail_overview_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_overview_title"
+                android:textSize="24sp"
+                android:paddingTop="4dp"
+                android:paddingStart="8dp"
+                android:textColor="@color/colorMost"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_media_title" />
+
+
+            <com.borjabravo.readmoretextview.ReadMoreTextView
+                android:id="@+id/detail_overview_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/detail_overview_title"
+                app:layout_constraintStart_toStartOf="parent"
+                android:paddingStart="8dp"
+                app:trimMode="trimModeLength"
+                app:colorClickableText="@color/grey"
+                app:trimLength="180"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:text=""
+                />
+
+
+            <TextView
+                android:id="@+id/detail_genres_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_genres_title"
+                android:textSize="24sp"
+                android:paddingTop="4dp"
+                android:paddingStart="8dp"
+                android:textColor="@color/colorMost"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_overview_content" />
+
+            <TextView
+                android:id="@+id/detail_genres_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Genres1,adasd2,"
+                android:textSize="18sp"
+                android:paddingStart="8dp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_genres_title" />
+
+            <TextView
+                android:id="@+id/detail_year_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Year"
+                android:textSize="24sp"
+                android:paddingTop="4dp"
+                android:paddingStart="8dp"
+                android:textColor="@color/colorMost"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_genres_content" />
+
+            <TextView
+                android:id="@+id/detail_year_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2017"
+                android:textSize="18sp"
+                android:paddingStart="8dp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_year_title" />
+
+            <TextView
+                android:id="@+id/detail_btn_add"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/ic_baseline_add_circle_outline_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_year_content" />
+
+            <TextView
+                android:id="@+id/detail_btn_fb"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/ic_baseline_facebook_24"
+                app:layout_constraintStart_toEndOf="@id/detail_btn_add"
+                app:layout_constraintTop_toBottomOf="@+id/detail_year_content" />
+
+            <TextView
+                android:id="@+id/detail_btn_tw"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_twitter_logo_dialog"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@id/detail_btn_fb"
+                app:layout_constraintTop_toBottomOf="@+id/detail_year_content" />
+
+            <TextView
+                android:id="@+id/detail_cast_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cast"
+                android:textSize="24sp"
+                android:paddingTop="4dp"
+                android:paddingStart="8dp"
+                android:textColor="@color/colorMost"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_btn_add" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detail_cast_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_cast_title"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/detail_review_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reviews"
+                android:textSize="24sp"
+                android:paddingTop="4dp"
+                android:paddingStart="8dp"
+                android:textColor="@color/colorMost"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_cast_content" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detail_review_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_review_title"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/detail_rec_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recommended Picks"
+                android:textSize="24sp"
+                android:paddingTop="4dp"
+                android:paddingStart="8dp"
+                android:textColor="@color/colorMost"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_review_content" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/detail_rec_pic_scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_rec_title"
+                >
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/detail_rec_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.core.widget.NestedScrollView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

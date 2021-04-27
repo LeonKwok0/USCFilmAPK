@@ -1,5 +1,6 @@
 package edu.usc.uscfilm01.ui.search;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import java.util.ArrayList;
 import edu.usc.uscfilm01.R;
+import edu.usc.uscfilm01.detailActivity;
 import edu.usc.uscfilm01.ui.home.ImgItem;
 
 
@@ -105,7 +107,9 @@ public class SearchFragment extends Fragment {
         searchAdapter.setItemListener(new SearchItemAdapter.itemListener() {
             @Override
             public void onClickItem(int position) {
-
+                Intent intent = new Intent(searchView.getContext(), detailActivity.class);
+                intent.putExtra("intent",""+data.get(position).watchListString());
+                startActivity(intent);
             }
 
         });

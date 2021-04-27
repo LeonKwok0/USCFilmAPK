@@ -1,4 +1,5 @@
 package edu.usc.uscfilm01.ui.watchList;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -19,15 +20,17 @@ import android.view.ViewGroup;
 import java.util.Collections;
 
 import edu.usc.uscfilm01.R;
+import edu.usc.uscfilm01.detailActivity;
 import edu.usc.uscfilm01.ui.home.DataPersitence;
+import edu.usc.uscfilm01.ui.home.ImgItem;
 
 
 public class WatchListFragment extends Fragment {
 
 
     private View watchView;
-    private SharedPreferences localData;
-    private SharedPreferences.Editor editor;
+    private DataPersitence localData;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -36,9 +39,14 @@ public class WatchListFragment extends Fragment {
         if(watchView==null){
             watchView = inflater.inflate(R.layout.fragment_watch_list, container, false);
         }
+        loadAndShow();
 
+        return watchView;
+    }
+
+    public void loadAndShow(){
         // fetch data from local
-        DataPersitence localData = new DataPersitence(watchView.getContext(),"alldata");
+        localData = new DataPersitence(watchView.getContext(),"alldata");
         // if no data show empty data page
         int size = localData.getItemList().size();
         if(size == 0){
@@ -49,7 +57,13 @@ public class WatchListFragment extends Fragment {
             showPic(watchView,localData);
         }
 
-        return watchView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // update data
+        loadAndShow();
     }
 
     public void showPic(View root, DataPersitence localData){
@@ -59,7 +73,10 @@ public class WatchListFragment extends Fragment {
         wlAdapter.setItemListener(new WatchListAdapter.itemListener() {
             @Override
             public void onClickItem(int position) {
-
+                Intent  intent = new Intent(root.getContext(), detailActivity.class);
+                ImgItem cur = localData.getItemList().get(position);
+                intent.putExtra("intent",""+cur.watchListString());
+                startActivity(intent);
             }
             @Override
             public void onClickDel(int position) {

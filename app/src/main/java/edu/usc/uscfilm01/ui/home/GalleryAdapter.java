@@ -20,6 +20,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import java.util.List;
 
 import edu.usc.uscfilm01.R;
+import edu.usc.uscfilm01.detailActivity;
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHolder> {
     private final List<ImgItem> data;
@@ -66,6 +67,10 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
                     if(iListener !=null){
                         iListener.onClickItem(getBindingAdapterPosition());
                     }
+                    Intent  intent = new Intent(ct, detailActivity.class);
+                    ImgItem cur = data.get(getBindingAdapterPosition());
+                    intent.putExtra("intent",""+cur.watchListString());
+                    ct.startActivity(intent);
                 }
             });
 
