@@ -30,6 +30,7 @@ public class WatchListFragment extends Fragment {
 
     private View watchView;
     private DataPersitence localData;
+    private  WatchListAdapter wlAdapter;
 
 
     @Override
@@ -63,13 +64,23 @@ public class WatchListFragment extends Fragment {
     public void onResume() {
         super.onResume();
         // update data
-        loadAndShow();
+//        loadAndShow();
+        DataPersitence latest = new DataPersitence(watchView.getContext(),"alldata");
+        for (int i = 0; i <localData.getItemList().size() ; i++) {
+            if(!latest.contains(localData.getItemList().get(i).getId()+"")){
+                localData.remove(localData.getItemList().get(i).getId()+"");
+                localData.commit();
+                wlAdapter.notifyItemRemoved(i);
+            }
+
+        }
+
     }
 
     public void showPic(View root, DataPersitence localData){
 
         RecyclerView wlRecView = root.findViewById(R.id.wl_rec_list);
-        WatchListAdapter wlAdapter = new WatchListAdapter(localData.getItemList(), root.getContext());
+        wlAdapter = new WatchListAdapter(localData.getItemList(), root.getContext());
         wlAdapter.setItemListener(new WatchListAdapter.itemListener() {
             @Override
             public void onClickItem(int position) {

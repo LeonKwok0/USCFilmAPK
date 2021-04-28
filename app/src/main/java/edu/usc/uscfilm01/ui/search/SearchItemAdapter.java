@@ -50,11 +50,7 @@ public class SearchItemAdapter extends RecyclerView.Adapter<SearchItemAdapter.My
         String year = curItem.getDate().substring(0,Math.min(curItem.getDate().length(),4));
         String typeYear = curItem.getMedia_type().toUpperCase()+" ("+year+")";
         holder.typeYear.setText(typeYear);
-        SpannableString textSpan = new SpannableString (curItem.getTitle().toUpperCase());
-        textSpan.setSpan(new AbsoluteSizeSpan(60),0,1, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        holder.title.setText(textSpan);
-
-
+        holder.title.setText(curItem.getTitle());
     }
 
     @Override

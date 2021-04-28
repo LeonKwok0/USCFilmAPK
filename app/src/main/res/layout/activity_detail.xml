@@ -32,7 +32,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/backexample" />
+                />
 
             <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                 android:id="@+id/youtube_player_view"
@@ -42,7 +42,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:showFullScreenButton="false"
-                app:videoId="S0Q4gqBUs7c" />
+                 />
 
 
             <androidx.constraintlayout.widget.Guideline
@@ -60,7 +60,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/guideline_header"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:paddingStart="8dp"
-                android:text="Demo Title"
                 android:textSize="24sp"
                 android:textColor="@color/white"
                 android:background="@color/colorMost"
@@ -90,7 +89,7 @@
                 android:paddingStart="8dp"
                 app:trimMode="trimModeLength"
                 app:colorClickableText="@color/grey"
-                app:trimLength="180"
+                app:trimLength="170"
                 android:textSize="18sp"
                 android:textColor="@color/white"
                 android:text=""
@@ -114,7 +113,6 @@
                 android:id="@+id/detail_genres_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Genres1,adasd2,"
                 android:textSize="18sp"
                 android:paddingStart="8dp"
                 android:textColor="@color/white"
@@ -215,8 +213,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/detail_review_content"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detail_review_title"
@@ -246,6 +244,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/detail_rec_title"
                 >
                 <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="18dp"
                     android:id="@+id/detail_rec_content"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

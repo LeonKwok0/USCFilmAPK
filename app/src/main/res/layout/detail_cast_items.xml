@@ -7,15 +7,16 @@
 
         <ImageView
             android:id="@+id/detail_cast_item_img"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:scaleType="fitXY"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:src="@drawable/backexample">
         </ImageView>
 
         <TextView
-            android:id="@+id/text_type_year"
+            android:id="@+id/detail_cast_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="2dp"

@@ -1,5 +1,7 @@
 package edu.usc.uscfilm01.ui.home;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -59,6 +62,16 @@ public class HomeFragment extends Fragment {
                 btnMov.setTextColor(getResources().getColor(R.color.colorMost));
                 btnTv.setTextColor(getResources().getColor(R.color.white));
                 fetchData("tv", homeView);
+            }
+        });
+
+        TextView footer =homeView.findViewById(R.id.footer);
+        footer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse("https://www.themoviedb.org/"));
+                homeView.getContext().startActivity(browserIntent);
             }
         });
         return homeView;

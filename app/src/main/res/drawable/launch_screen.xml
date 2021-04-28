@@ -3,6 +3,8 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/ColorBg" />
     <item android:drawable="@drawable/ic_theaters_white_18dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:width="64dp"
+        android:height="64dp">
     </item>
 </layer-list>
