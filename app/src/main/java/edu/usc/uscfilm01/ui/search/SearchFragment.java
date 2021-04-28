@@ -83,7 +83,7 @@ public class SearchFragment extends Fragment {
                                 searchView.findViewById(R.id.search_rec_list).setVisibility(View.VISIBLE);
                                 showResult(resData);
                             }else {
-                                searchView.findViewById(R.id.search_no_res_view).findViewById(View.VISIBLE);
+                                searchView.findViewById(R.id.search_no_res_view).setVisibility(View.VISIBLE);
                                 searchView.findViewById(R.id.search_rec_list).setVisibility(View.GONE);
                             }
 
