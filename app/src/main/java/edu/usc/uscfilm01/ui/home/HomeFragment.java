@@ -162,6 +162,7 @@ public class HomeFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.d("Fetch", "Fetching: "+ url);
                         try {
                             JSONArray result = new JSONArray(response);
                             for (int i = 0; i <result.length() ; i++) {

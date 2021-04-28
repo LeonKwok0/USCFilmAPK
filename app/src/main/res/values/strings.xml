@@ -19,7 +19,7 @@
     <string name="footer_text">Powered by TMDB \n Developed by LiangGuo</string>
     <string name="empty_wl_text">Nothing saved to Watchlist</string>
     <string name="hint_search">Search Movies and TV</string>
-    <string name="base_url">http://10.0.2.2:3001/</string>
+    <string name="base_url">https://lianghw9.wn.r.appspot.com/</string>
     <string name="search_no_res">No result found.</string>
     <string name="title_activity_detail">detailActivity</string>
     <!-- Strings used for fragments for navigation -->
