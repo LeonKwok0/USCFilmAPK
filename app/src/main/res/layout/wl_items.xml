@@ -13,7 +13,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:foreground="@drawable/gallery_shell"
-        android:src="@drawable/demo">
+        >
     </ImageView>
 
     <TextView

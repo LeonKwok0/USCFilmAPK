@@ -11,7 +11,7 @@
         android:layout_height="171dp"
         android:layout_marginEnd="19dp"
         android:foreground="@drawable/gallery_shell"
-        android:src="@drawable/demo">
+        >
     </ImageView>
     <TextView
         android:id="@+id/btn_pop"
