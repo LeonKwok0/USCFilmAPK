@@ -5,3 +5,4 @@ This is source file of Andorid Stuido project.
 - powered by TMDB API
 
 - USC Viterbi/CSCI 571 Homwork 9.
+- NOT COPY IT FOR YOUR HOMEWORK, OBEY USC HONOUR CODE
